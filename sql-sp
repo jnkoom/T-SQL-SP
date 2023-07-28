@@ -1,0 +1,25 @@
+CREATE TABLE AccountTable
+(
+  RowID int IDENTITY(1, 1),
+  AccountID varchar(2),
+  AccountName varchar(50),
+  SeqNum int,
+  SeqDate datetime
+)
+
+CREATE PROCEDURE [ACCOUNTTABLE_UPDATE]
+(
+  @SeqNum int,
+  @SeqDate datetime,
+  @Account_ID varchar(2)
+)
+
+AS 
+SET NOCOUNT ON
+BEGIN
+UPDATE AccountTable
+SET SeqNum = @SeqNum, SeqDate = @SeqDate
+WHERE AccountID = @AccountID
+END
+
+EXEC ACCOUNTTABLE_UPDATE  SeqNumValue, SeqDateValue, AccountIDValue
